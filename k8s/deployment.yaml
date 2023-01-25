@@ -3,30 +3,16 @@ kind: Deployment
 metadata:
   name: mydeployment
 spec:
-  replicas: 4
   selector:
     matchLabels:
       app: web
   template:
     metadata:
       labels:
-	app: web
+        app: web
     spec:
       containers:
-      - name: site
+      - name: web
         image: evandrofernandes/conversao-temperatura:v1
-	ports:
-	- containerPort: 80
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: web
-spec:
-  selector:
-    app: web
-  ports:
-    - port: 80
-      nodePort: 30000
-  type: NodePort
+        ports:
+        - containerPort: 80
